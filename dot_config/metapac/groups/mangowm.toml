@@ -1,0 +1,13 @@
+[packages]
+pacman = [
+    "noctalia",
+    "greetd",
+    "wl-clip-persist",
+    "xdg-desktop-portal",
+    "xdg-desktop-portal-wlr"
+]
+
+aur = [
+    "noctalia-greeter",
+    "mangowm-git"
+]

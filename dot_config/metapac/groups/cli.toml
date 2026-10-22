@@ -1,0 +1,13 @@
+[packages]
+pacman = [
+    "foot",
+    "foot-terminfo",
+    "fastfetch",
+    "mc",
+    "htop",
+    "btop",
+    "fd",
+    "ripgrep",
+    "yazi",
+    "git"
+]

@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+set -e
+
+# Parse dot_config/metapac/groups/mangowm.toml directly via chezmoi template engine
+{{- $groupConfig := include "dot_config/metapac/groups/mangowm.toml" | fromToml }}
+
+# Dynamically populate required packages from pacman and aur sections
+REQUIRED_PACKAGES=(
+{{- if hasKey $groupConfig.packages "pacman" }}
+{{- range $groupConfig.packages.pacman }}
+    "{{ . }}"
+{{- end }}
+{{- end }}
+{{- if hasKey $groupConfig.packages "aur" }}
+{{- range $groupConfig.packages.aur }}
+    "{{ . }}"
+{{- end }}
+{{- end }}
+)
+
+echo "==> [chezmoi] Verifying all packages from mangowm.toml (${#REQUIRED_PACKAGES[@]} packages)..."
+
+# Ensure every declared package is installed before proceeding
+for pkg in "${REQUIRED_PACKAGES[@]}"; do
+    if ! pacman -Qi "$pkg" &> /dev/null; then
+        echo "==> [chezmoi] ERROR: Package '$pkg' declared in mangowm.toml is missing."
+        echo "==> [chezmoi] Aborting XFCE removal to ensure system stability."
+        exit 1
+    fi
+done
+
+echo "==> [chezmoi] All group packages verified successfully."
+
+# Remove XFCE components if present
+if pacman -Qq xfce4-session &> /dev/null; then
+    echo "==> [chezmoi] Removing XFCE desktop components and conflicting services..."
+    sudo pacman -Rns --noconfirm \
+        xfce4 \
+        xfce4-goodies \
+        lightdm \
+        lightdm-gtk-greeter \
+        xfce4-notifyd || true
+
+    echo "==> [chezmoi] Enabling greetd display manager..."
+    sudo systemctl enable greetd
+else
+    echo "==> [chezmoi] XFCE is not detected. Ensuring greetd service is enabled..."
+    sudo systemctl enable greetd
+fi
+
+echo "==> [chezmoi] Desktop transition completed."

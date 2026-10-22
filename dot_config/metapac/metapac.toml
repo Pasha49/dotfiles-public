@@ -1,0 +1,9 @@
+[general]
+groups = ["base", "cli", "mangowm"]
+
+[backends.pacman]
+enabled = true
+
+[backends.aur]
+enabled = true
+helper = "pamac"

@@ -1,0 +1,9 @@
+[packages]
+pacman = [
+    "pipewire",
+    "wireplumber",
+    "ttf-jetbrains-mono-nerd",
+    "flameshot",
+    "uwsm",
+    "thunar"
+]

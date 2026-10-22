@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -e
+
+# Trigger execution when group definitions change
+# base.toml hash: {{ include "dot_config/metapac/groups/base.toml" | sha256sum }}
+# cli.toml hash: {{ include "dot_config/metapac/groups/cli.toml" | sha256sum }}
+# mangowm.toml hash: {{ include "dot_config/metapac/groups/mangowm.toml" | sha256sum }}
+
+echo "==> [chezmoi] Package list changes detected. Running metapac sync..."
+metapac sync --assume-yes
