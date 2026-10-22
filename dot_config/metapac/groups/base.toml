@@ -1,5 +1,5 @@
-[packages]
-pacman = [
+[arch]
+packages = [
     "pipewire",
     "wireplumber",
     "ttf-jetbrains-mono-nerd",

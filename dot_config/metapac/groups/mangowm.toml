@@ -1,14 +1,11 @@
-[packages]
-pacman = [
+[arch]
+packages = [
     "noctalia",
     "greetd",
     "grim",
     "wl-clip-persist",
     "xdg-desktop-portal",
-    "xdg-desktop-portal-wlr"
-]
-
-aur = [
+    "xdg-desktop-portal-wlr",
     "noctalia-greeter",
     "mangowm-wlonly"
 ]

@@ -1,18 +1,13 @@
 #!/usr/bin/env bash
 set -e
 
-# Parse dot_config/metapac/groups/mangowm.toml directly via chezmoi template engine
+# Parse mangowm.toml group definition
 {{- $groupConfig := include "dot_config/metapac/groups/mangowm.toml" | fromToml }}
 
-# Dynamically populate required packages from pacman and aur sections
+# Populate required packages list from the arch backend section
 REQUIRED_PACKAGES=(
-{{- if hasKey $groupConfig.packages "pacman" }}
-{{- range $groupConfig.packages.pacman }}
-    "{{ . }}"
-{{- end }}
-{{- end }}
-{{- if hasKey $groupConfig.packages "aur" }}
-{{- range $groupConfig.packages.aur }}
+{{- if hasKey $groupConfig "arch" }}
+{{- range $groupConfig.arch.packages }}
     "{{ . }}"
 {{- end }}
 {{- end }}

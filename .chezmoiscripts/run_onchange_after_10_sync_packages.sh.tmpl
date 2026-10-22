@@ -7,4 +7,4 @@ set -e
 # mangowm.toml hash: {{ include "dot_config/metapac/groups/mangowm.toml" | sha256sum }}
 
 echo "==> [chezmoi] Package list changes detected. Running metapac sync..."
-metapac sync --assume-yes
+metapac sync
