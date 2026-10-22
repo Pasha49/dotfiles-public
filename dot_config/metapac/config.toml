@@ -1,4 +1,4 @@
 enabled_backends = ["arch"]
 
 [arch]
-package_manager = "pamac"
+package_manager = "yay"
