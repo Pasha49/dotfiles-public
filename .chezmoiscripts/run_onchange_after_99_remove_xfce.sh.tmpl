@@ -26,21 +26,40 @@ done
 
 echo "==> [chezmoi] All group packages verified successfully."
 
+# Ensure greetd configuration file exists with Noctalia session wrapper
+echo "==> [chezmoi] Ensuring /etc/greetd/config.toml is configured..."
+sudo mkdir -p /etc/greetd
+sudo tee /etc/greetd/config.toml > /dev/null << 'EOF'
+[terminal]
+vt = 1
+
+[default_session]
+command = "/usr/bin/noctalia-greeter-session"
+user = "greeter"
+EOF
+
+# Ensure greeter user is in required groups
+if id "greeter" &> /dev/null; then
+    sudo usermod -aG video,input greeter || true
+fi
+
+# Switch display manager in systemd
+echo "==> [chezmoi] Switching display manager from LightDM to greetd..."
+sudo systemctl disable lightdm 2>/dev/null || true
+sudo rm -f /etc/systemd/system/display-manager.service
+sudo systemctl enable --force greetd
+
 # Remove XFCE components if present
 if pacman -Qq xfce4-session &> /dev/null; then
-    echo "==> [chezmoi] Removing XFCE desktop components and conflicting services..."
-    sudo pacman -Rns --noconfirm \
+    echo "==> [chezmoi] Removing XFCE desktop, settings, and LightDM..."
+    # Using -Rcns to cascade-remove packages that depend on lightdm/xfce
+    sudo pacman -Rcns --noconfirm \
         xfce4 \
         xfce4-goodies \
         lightdm \
         lightdm-gtk-greeter \
+        lightdm-gtk-greeter-settings \
         xfce4-notifyd || true
-
-    echo "==> [chezmoi] Enabling greetd display manager..."
-    sudo systemctl enable greetd
-else
-    echo "==> [chezmoi] XFCE is not detected. Ensuring greetd service is enabled..."
-    sudo systemctl enable greetd
 fi
 
-echo "==> [chezmoi] Desktop transition completed."
+echo "==> [chezmoi] Desktop transition completed successfully!"
