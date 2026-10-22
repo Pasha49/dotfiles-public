@@ -2,6 +2,7 @@
 pacman = [
     "noctalia",
     "greetd",
+    "grim",
     "wl-clip-persist",
     "xdg-desktop-portal",
     "xdg-desktop-portal-wlr"
@@ -9,5 +10,5 @@ pacman = [
 
 aur = [
     "noctalia-greeter",
-    "mangowm-git"
+    "mangowm-wlonly"
 ]

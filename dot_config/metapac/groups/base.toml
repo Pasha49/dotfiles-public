@@ -5,5 +5,12 @@ pacman = [
     "ttf-jetbrains-mono-nerd",
     "flameshot",
     "uwsm",
-    "thunar"
+    "tumbler",
+    "gvfs",
+    "gvfs-mtp",
+    "gvfs-smb",
+    "thunar",
+    "thunar-archive-plugin"
+    "file-roller",
+    "firefox"
 ]
