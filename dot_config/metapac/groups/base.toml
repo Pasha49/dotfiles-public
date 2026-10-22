@@ -10,7 +10,7 @@ pacman = [
     "gvfs-mtp",
     "gvfs-smb",
     "thunar",
-    "thunar-archive-plugin"
+    "thunar-archive-plugin",
     "file-roller",
     "firefox"
 ]
