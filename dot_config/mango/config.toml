@@ -115,6 +115,7 @@ source = [
     "./monitors.conf",
     "./tag.conf",
     "./effects_scenefx.toml",
+    "./rule_effectsfx.toml",
 ]
 
 # Autostart execution

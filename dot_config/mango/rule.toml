@@ -130,34 +130,23 @@ app_id = "^spotifast$"
 # Layer Rules
 
 [[rule.layer_rule]]
-no_blur = 1
 no_animation = 1
 layer_name = "selection"
 
 [[rule.layer_rule]]
-no_blur = 1
-no_shadow = 1
-layer_name = "noctalia.*"
-
-[[rule.layer_rule]]
-no_blur = 1
 no_animation = 1
 layer_name = "dms"
 
 [[rule.layer_rule]]
-no_blur = 1
 no_animation = 1
 layer_name = "dms:.*"
 
 [[rule.layer_rule]]
-no_blur = 1
 no_animation = 1
 layer_name = "dimland_layer"
 
 [[rule.layer_rule]]
 no_animation = 1
-no_blur = 1
-no_shadow = 1
 layer_name = "hyprpicker"
 
 [[rule.layer_rule]]
