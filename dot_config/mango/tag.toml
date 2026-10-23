@@ -1,0 +1,11 @@
+# Tag rules
+
+# Default layout for all tags
+[[rule.tag_rule]]
+id = "*"
+layout_name = "tile"
+
+# Browser
+[[rule.tag_rule]]
+id = 3
+layout_name = "scroller"
