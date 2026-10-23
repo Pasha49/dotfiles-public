@@ -7,5 +7,7 @@ packages = [
     "xdg-desktop-portal",
     "xdg-desktop-portal-wlr",
     "noctalia-greeter",
-    "mangowm-wlonly"
+    "mangowm-wlonly",
+    "wf-recorder",
+    "satty"
 ]
