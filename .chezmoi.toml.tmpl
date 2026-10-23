@@ -2,4 +2,4 @@
 {{- $has_scenefx := promptBoolOnce . "has_scenefx" "Enable SceneFX effects (blur, shadows)? Press [y/n] in EN layout (default: y)" true -}}
 
 [data]
-    has_scenefx = {{ $has_scenefx }}
+    data.has_scenefx = {{ $has_scenefx }}
