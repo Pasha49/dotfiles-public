@@ -1,27 +1,6 @@
 [global]
 
 # Effects
-blur = 0
-blur_layer = 1
-blur_optimized = 1
-blur_params_num_passes = 2
-blur_params_radius = 5
-blur_params_noise = 0.02
-blur_params_brightness = 0.9
-blur_params_contrast = 0.9
-blur_params_saturation = 1.2
-
-shadows = 1
-layer_shadows = 1
-shadow_only_floating = 1
-shadows_size = 12
-shadows_blur = 15
-shadows_position_x = 0
-shadows_position_y = 0
-shadows_color = "0x000000ff"
-
-border_radius = 6
-no_radius_when_single = 0
 focused_opacity = 1.0
 unfocused_opacity = 0.85
 
@@ -127,11 +106,6 @@ urgent_color = "0xad401fff"
 scratchpad_color = "0xc4939dff"
 global_color = "0x8d64cfff"
 overlay_color = "0x89aa61ff"
-xkb_layout_focus_colors = [
-    "0xc9b890ff",
-    "0xad401fff",
-    "0x516c93ff"
-]
 
 # Sourced Configurations
 source = [
@@ -140,6 +114,7 @@ source = [
     "./rule.conf",
     "./monitors.conf",
     "./tag.conf",
+    "./effects_scenefx.toml",
 ]
 
 # Autostart execution
