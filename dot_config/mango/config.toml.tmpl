@@ -114,8 +114,13 @@ source = [
     "./rule.toml",
 #    "./monitors.conf",
     "./tag.toml",
+{{- if .has_scenefx }}
     "./effects_scenefx.toml",
     "./rule_effectsfx.toml",
+{{- else }}
+    # "./effects_scenefx.toml",
+    # "./rule_effectsfx.toml",
+{{- end }}
 ]
 
 # Autostart execution

@@ -1,5 +1,5 @@
-# Prompt user once on initial setup; defaults to true on Enter
-{{- $has_scenefx := promptBoolOnce . "has_scenefx" "Enable SceneFX effects (blur, shadows) on this machine?" true -}}
+# Prompt user with explicit single-key instructions (press 'y' for yes, 'n' for no)
+{{- $has_scenefx := promptBoolOnce . "has_scenefx" "Enable SceneFX effects (blur, shadows)? Press [y/n] in EN layout (default: y)" true -}}
 
 [data]
     has_scenefx = {{ $has_scenefx }}
