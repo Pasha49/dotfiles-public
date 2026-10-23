@@ -12,5 +12,6 @@ packages = [
     "thunar",
     "thunar-archive-plugin",
     "file-roller",
-    "firefox"
+    "firefox",
+    "pacman-contrib"
 ]
