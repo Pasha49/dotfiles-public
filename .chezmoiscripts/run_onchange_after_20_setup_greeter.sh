@@ -41,10 +41,17 @@ if [ -f /etc/pam.d/greetd ]; then
     fi
 fi
 
-# Generate UWSM desktop entries so Noctalia Greeter can launch sessions via UWSM
+# Provide a UWSM session entry for Wayland display managers
 if command -v uwsm &> /dev/null; then
-    echo "==> [chezmoi] Generating UWSM session entries for display manager..."
-    sudo uwsm desktop-entry generate || true
+    echo "==> [chezmoi] Ensuring mango-uwsm.desktop entry exists..."
+    sudo mkdir -p /usr/share/wayland-sessions
+    sudo tee /usr/share/wayland-sessions/mango-uwsm.desktop > /dev/null << 'EOF'
+[Desktop Entry]
+Name=Mango (UWSM)
+Comment=MangoWM managed by UWSM
+Exec=uwsm start -S -s a -F /usr/share/wayland-sessions/mango.desktop
+Type=Application
+EOF
 fi
 
 # Ensure greetd service is enabled in systemd
